@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bree's Baddies</title>
+    <title>TESTING</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
@@ -47,21 +47,26 @@
             }
         }
     </style>
-    <h1>Fight to the Death!</h1>
+    <h1>My Hobbies</h1>
 </head>
 
 <body>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <p><a href="index.html">Back to Home</a></p>
+    <ol>
+        <li>Puppies</li>
+        <li>Joe Vance</li>
+        <li>Learning to Code</li>
+        <li>TPKing My Parties</li>
+    </ol>
 
     <hr size="3" noshade>
-    <div id="gothefuckaway">
+    <!-- <div id="gothefuckaway">
         <h1>How Many Baddies?</h1>
         <p><input id="baddieCount" type="number" placeholder="1"></p>
         <p><input type="submit" onclick="generateBaddies()" value="Go!"></p>
-    </div>
+    </div> -->
     <!-- <div>
         <h1 id="Baddie1">
             HP Calculator
@@ -88,7 +93,7 @@
             document.getElementById("currentHit" + divId).value = "0"
         }
 
-        function addBaddie(baddieId) {
+        function addBaddie(baddieId, baddie) {
             var divString = "<div>"
             divString += '<h1 style="margin: 0 .1em" id="Baddie'+baddieId+'">'
             divString += "HP Calculator"
@@ -101,6 +106,8 @@
             divString += "</div>"
 
             document.body.innerHTML += divString
+            
+            
         }
 
         function generateBaddies() {
@@ -112,7 +119,55 @@
             for (let index = 0; index < baddieCount; index++) {
                 addBaddie(index);                
             }
+        }        
+
+        class Baddie {
+            constructor(name, hp){
+                this.name = name;
+                this.hp = hp;
+            }
         }
+
+        // var Baddies = [
+        //     new Baddie("Strahd",1000),
+        //     new Baddie("Vamp1",500),
+        //     new Baddie("Vamp2",500),
+        //     new Baddie("Vamp3",500),
+        //     new Baddie("WWolf1",750),
+        //     new Baddie("WWolf2",750),
+        //     new Baddie("WWolf3",750),
+        //     new Baddie("WWolf4",750),
+        // ]
+
+        var Baddies = [
+            new Baddie("Strahd",1000),
+            new Baddie("Vamp1",500),
+            new Baddie("Vamp2",500),
+            new Baddie("Vamp3",500),
+        ]
+
+        var i = 1;
+        Baddies.forEach(element => {
+            addBaddie(i)
+            i++
+        });
+
+        i = 1;
+        Baddies.forEach(baddie => {
+            document.getElementById("Baddie"+i).innerHTML = baddie.name
+            document.getElementById("Name"+i).value = baddie.name
+                document.getElementById("Hp"+i).value = baddie.hp
+            i++
+        });
+
+        
+            // var promptString = '<div id="gothefuckaway">'
+            //     promptString += '<h1>How Many Baddies?</h1>'
+            //     promptString += '<p><input id="baddieCount" type="number" placeholder="1"></p>'
+            //     promptString += '<p><input type="submit" onclick="generateBaddies()" value="Go!"></p>'
+            //     promptString += '</div>'
+
+            // document.body.innerHTML += promptString
 
     </script>
 </body>
