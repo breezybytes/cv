@@ -2,18 +2,56 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>My Hobbies</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <h1>My Hobbies</h1>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Hobbies</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        body {
+            background-color: #443737;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        }
+
+        div {
+            width: 300px;
+            margin: .5em;
+            padding: 1em;
+            background-color: #ff0000;
+            border-radius: 1.8em;
+            box-shadow: 2px 3px 7px 2px rgba(0, 0, 0, 0.02);
+            float: left;
+        }
+
+
+
+        a:link,
+        a:visited {
+            color: #38488f;
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+            div {
+                margin: 0 auto;
+                width: auto;
+            }
+        }
+    </style>
+    <h1>My Hobbies</h1>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <ol>
@@ -22,7 +60,66 @@
         <li>Learning to Code</li>
         <li>TPKing My Parties</li>
     </ol>
-        
-        <script src="" async defer></script>
-    </body>
+
+    <hr size="3" noshade>
+    <div id="gothefuckaway">
+        <h1>How Many Baddies?</h1>
+        <p><input id="baddieCount" type="number" placeholder="1"></p>
+        <p><input type="submit" onclick="generateBaddies()" value="Go!"></p>
+    </div>
+    <!-- <div>
+        <h1 id="Baddie1">
+            HP Calculator
+        </h1>
+
+        <p>Baddie Name: <input id="Name1" type="text" placeholder="Monster Name"></p>
+        <p>Current HP: <input id="Hp1" type="text" placeholder="81"> </p>
+        <p>Hit: <input id="currentHit1" type="text" placeholder="Ouch"></p>
+        <p><input onclick="takeHit(1)" type="submit" value="Hit Me!"></p>
+    </div> -->
+
+    <script async defer>
+
+
+        function takeHit(divId) {
+            document.getElementById("Baddie" + divId).innerHTML = document.getElementById("Name" + divId).value;
+
+            var currentHP = document.getElementById("Hp" + divId).value
+            var currentHit = document.getElementById("currentHit" + divId).value
+
+            currentHP -= currentHit
+
+            document.getElementById("Hp" + divId).value = currentHP
+            document.getElementById("currentHit" + divId).value = "0"
+        }
+
+        function addBaddie(baddieId) {
+            var divString = "<div>"
+            divString += '<h1 style="margin: 0 .1em" id="Baddie'+baddieId+'">'
+            divString += "HP Calculator"
+            divString += "</h1>"
+
+            divString += '<p>Baddie Name: <input id="Name'+baddieId+'" type="text" placeholder="Monster Name"></p>'
+            divString += '<p>Current HP: <input id="Hp'+baddieId+'"type="text" placeholder="81"> </p>'
+            divString += '<p>Hit: <input id="currentHit'+baddieId+'" type="text" placeholder="Ouch"></p>'
+            divString += '<p style="margin-bottom: 0"><input onclick="takeHit('+baddieId+')" type="submit" value="Hit Me!"></p>  '
+            divString += "</div>"
+
+            document.body.innerHTML += divString
+        }
+
+        function generateBaddies() {
+            var baddieCount = document.getElementById("baddieCount").value;
+
+            var startup = document.getElementById("gothefuckaway")
+            startup.parentNode.removeChild(startup)
+            
+            for (let index = 0; index < baddieCount; index++) {
+                addBaddie(index);                
+            }
+        }
+
+    </script>
+</body>
+
 </html>
